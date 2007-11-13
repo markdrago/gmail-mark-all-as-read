@@ -29,9 +29,17 @@ function add_button() {
     elem = elem.firstChild;
   }
 
+  //see if the button has already been created
+  for (var i = 0; i < elem.childNodes.length; i++) {
+    if (elem.childNodes[i].id == 'maar') {
+      return;
+    }
+  }
+
   var button = window.document["createElement"]('button');   
   button.setAttribute('type', 'button');
   button.setAttribute('class', 'BuNwUe');
+  button.setAttribute('id', 'maar');
   button.innerHTML = 'Mark All As Read';
   button.addEventListener('click', button_pressed, false);
 
