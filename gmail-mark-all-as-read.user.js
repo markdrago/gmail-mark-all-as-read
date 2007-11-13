@@ -13,7 +13,33 @@
 var gmail;
 
 function view_changed () {
+  GM_log("view changed");
+  new_view = gmail.getActiveViewType();
+  if (new_view == 'tl') {
+    add_button();
+  }
+}
+
+function add_button() {
   GM_log("consider the button created");
+  var elem = gmail.getActiveViewElement();
+
+  //we take a few steps down in the DOM to find the right element
+  for (var i = 0; i < 7; i++) {
+    elem = elem.firstChild;
+  }
+
+  var button = window.document["createElement"]('button');   
+  button.setAttribute('type', 'button');
+  button.setAttribute('class', 'BuNwUe');
+  button.innerHTML = 'Mark All As Read';
+  button.addEventListener('click', button_pressed, false);
+
+  elem.appendChild(button);
+}
+
+function button_pressed(e) {
+  alert('button pressed');
 }
 
 function main_func(gmail_obj) {
