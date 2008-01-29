@@ -47,7 +47,22 @@ function add_button() {
 }
 
 function button_pressed(e) {
-  alert('button pressed');
+  //find 'select all' node
+  var elem = gmail.getActiveViewElement();
+  elem = elem.firstChild;
+  elem = elem.firstChild;
+  elem = elem.childNodes[1];
+  elem = elem.firstChild;
+  elem = elem.firstChild;
+  elem = elem.childNodes[1];
+  elem = elem.firstChild;  
+
+  //create 'click' event and dispatch
+  var event1 = document.createEvent("MouseEvents");
+  event1.initMouseEvent("mousedown", true, true, window,
+  						1, 0, 0, 0, 0, false, false, false,
+  						false, 0, null);
+  elem.dispatchEvent(event1);
 }
 
 function main_func(gmail_obj) {
