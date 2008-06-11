@@ -60,8 +60,8 @@ function button_pressed(e) {
   //create 'click' event and dispatch
   var event1 = document.createEvent("MouseEvents");
   event1.initMouseEvent("mousedown", true, true, window,
-  						1, 0, 0, 0, 0, false, false, false,
-  						false, 0, null);
+			1, 0, 0, 0, 0, false, false, false,
+			false, 0, null);
   elem.dispatchEvent(event1);
 }
 
