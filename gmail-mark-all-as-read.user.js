@@ -48,8 +48,8 @@ function add_button() {
 
 function button_pressed(e) {
   //find 'select all' node
-  var elem = gmail.getActiveViewElement();
-  elem = elem.firstChild;
+  var aview = gmail.getActiveViewElement();
+  elem = aview.firstChild;
   elem = elem.firstChild;
   elem = elem.childNodes[1];
   elem = elem.firstChild;
@@ -63,6 +63,21 @@ function button_pressed(e) {
 			1, 0, 0, 0, 0, false, false, false,
 			false, 0, null);
   elem.dispatchEvent(event1);
+
+  //get 'select all pages' node
+  elem = aview.firstChild;
+  elem = elem.childNodes[1];
+  elem = elem.firstChild;
+  elem = elem.childNodes[2];
+  GM_log("got select_all" + elem.innerHTML);
+
+  //create 'click' event and dispatch again
+  var event2 = document.createEvent("MouseEvents");
+  event2.initMouseEvent("click", true, true, window,
+			1, 0, 0, 0, 0, false, false, false,
+			false, 0, null);
+
+  elem.dispatchEvent(event2);
 }
 
 function main_func(gmail_obj) {
